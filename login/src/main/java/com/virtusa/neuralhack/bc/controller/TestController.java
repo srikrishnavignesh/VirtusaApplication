@@ -18,7 +18,7 @@ public class TestController {
 	@Autowired
 	TestService service;
 	
-	@PostMapping("/test")
+	@PostMapping("/test/newTest")
 	public HashMap<String, String> addTest(@RequestBody HashMap<String,Object> req)
 	{
 		
@@ -26,14 +26,14 @@ public class TestController {
 			
 	}
 	
-	@PostMapping("/testMarks")
+	@PostMapping("/test/mark")
 	public HashMap<String,String> addTestMarks(@RequestBody HashMap<String,Object> req) {
 		
 		return service.addTestMarks(req);
 		
 	}
 	
-	@PostMapping("/testQuestion")
+	@PostMapping("/test/question")
 	public HashMap<String,String> addTestQuestion(@RequestBody TestQuestion tq){
 		
 		return service.addTestQuestion(tq);

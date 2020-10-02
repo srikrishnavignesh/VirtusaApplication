@@ -154,5 +154,12 @@ public class TestService {
 		
 	}
 	
+	public List<Test> getAllTests() {
+		
+		return testAccess.findAll();
+	
+		
+	}
+
 
 }

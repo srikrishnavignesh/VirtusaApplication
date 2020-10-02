@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
@@ -31,7 +32,7 @@ public class TestQuestion {
 	
 	private String question;
 
-	@ElementCollection
+	@ElementCollection()
 	@CollectionTable(name="quesOptions",joinColumns= {@JoinColumn(name = "ques_id"),@JoinColumn(name = "test_id")})
 	@Column(name="options")
 	List<String> quesOptions;

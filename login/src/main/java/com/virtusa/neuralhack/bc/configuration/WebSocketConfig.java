@@ -21,7 +21,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 	@Override
 	public void registerStompEndpoints(StompEndpointRegistry registry) {
 		
-		registry.addEndpoint("/physice-websocket");
+		registry.addEndpoint("/physics-websocket");
 		registry.addEndpoint("/physics-websocket").withSockJS();
 	}
 

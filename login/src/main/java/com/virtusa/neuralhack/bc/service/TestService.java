@@ -116,40 +116,43 @@ public class TestService {
 		return res;
 	}
 	
-	public HashMap<String,String> addTestQuestion(TestQuestion tq) {
+	public HashMap<String,String> addTestQuestion(List<TestQuestion> list) {
 		
 		HashMap<String,String> res=new HashMap<String,String>();
+		for(TestQuestion tq :list) {
 		
-		try
-		{
-		
-			if(tq.getQuestion()==null || tq.getQuestion().length()==0 || tq.getCrctOp()==null || tq.getCrctOp().length()==0)
+			try
 			{
+		
+				if(tq.getQuestion()==null || tq.getQuestion().length()==0 || tq.getCrctOp()==null || tq.getCrctOp().length()==0)
+				{
+					res.put(TestInfo.STATUS, TestInfo.QUES_ERROR);
+					res.put(TestInfo.ERROR,  TestInfo.INVALID_FIELDS);
+					return res;
+				}
+			
+			
+			
+			
+				tqAccess.save(tq);
+			
+			}
+			catch(NumberFormatException e) {
+			
+			}
+			catch(ObjectRetrievalFailureException e)
+			{
+				res.put(TestInfo.ERROR, TestInfo.INVALID_TABLE_NAME);
 				res.put(TestInfo.STATUS, TestInfo.QUES_ERROR);
-				res.put(TestInfo.ERROR,  TestInfo.INVALID_FIELDS);
 				return res;
 			}
-			
-			
-			
-			
-			tqAccess.save(tq);
-			
-			res.put(TestInfo.STATUS, TestInfo.QUES_SUCCESS);
-			
+			catch(Exception e ) {
+				res.put(TestInfo.ERROR, TestInfo.STATUS_UNKNOWN);					//unknown error
+				res.put(TestInfo.STATUS, TestInfo.MARK_ERROR);
+				return res;
+			}
 		}
-		catch(NumberFormatException e) {
-			
-		}
-		catch(ObjectRetrievalFailureException e)
-		{
-			res.put(TestInfo.ERROR, TestInfo.INVALID_TABLE_NAME);
-			res.put(TestInfo.STATUS, TestInfo.QUES_ERROR);
-		}
-		catch(Exception e ) {
-			res.put(TestInfo.ERROR, TestInfo.STATUS_UNKNOWN);					//unknown error
-			res.put(TestInfo.STATUS, TestInfo.MARK_ERROR);
-		}
+		res.put(TestInfo.STATUS, TestInfo.QUES_SUCCESS);
 		return res;
 		
 	}

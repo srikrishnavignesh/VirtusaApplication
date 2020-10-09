@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.virtusa.neuralhack.bc.model.Test;
 import com.virtusa.neuralhack.bc.model.TestMarks;
 import com.virtusa.neuralhack.bc.model.TestQuestion;
+import com.virtusa.neuralhack.bc.model.TestQuestions;
 import com.virtusa.neuralhack.bc.service.TestService;
 
 @RestController
@@ -38,9 +39,9 @@ public class TestController {
 	}
 	
 	@PostMapping("/test/question")
-	public HashMap<String,String> addTestQuestion(@RequestBody TestQuestion tq){
+	public HashMap<String,String> addTestQuestion(@RequestBody TestQuestions tq){
 		
-		return service.addTestQuestion(tq);
+		return service.addTestQuestion(tq.getList());
 	}
 	
 	@GetMapping("/test")

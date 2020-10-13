@@ -15,7 +15,6 @@ public class TestQuestionsOutput {
 		this.question=question;
 		this.crctOp=crctOp;
 		this.quesOptions=quesOptions;
-		quesOptions.add(crctOp);
 		
 	}
 	

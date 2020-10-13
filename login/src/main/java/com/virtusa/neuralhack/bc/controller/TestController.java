@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.virtusa.neuralhack.bc.model.Test;
-import com.virtusa.neuralhack.bc.model.TestMarks;
+
 import com.virtusa.neuralhack.bc.model.TestQuestion;
 import com.virtusa.neuralhack.bc.model.TestQuestions;
 import com.virtusa.neuralhack.bc.model.TestQuestionsOutput;
@@ -50,6 +50,7 @@ public class TestController {
 	{
 		return service.getAllTests();
 	}
+	
 	
 	@GetMapping("test/questions/{testId}")
 	public List<TestQuestionsOutput> getAllquestions(@PathVariable("testId") long testId) {

@@ -14,13 +14,15 @@ import org.springframework.stereotype.Service;
 
 import com.virtusa.neuralhack.bc.dao.TeacherDao;
 import com.virtusa.neuralhack.bc.dao.TestDao;
-import com.virtusa.neuralhack.bc.dao.TestMarksDao;
+
 import com.virtusa.neuralhack.bc.dao.TestQuestionDao;
+import com.virtusa.neuralhack.bc.dao.dataDAO;
+import com.virtusa.neuralhack.bc.model.Data;
 import com.virtusa.neuralhack.bc.model.Student;
 import com.virtusa.neuralhack.bc.model.Teacher;
 import com.virtusa.neuralhack.bc.model.Test;
 import com.virtusa.neuralhack.bc.model.TestInfo;
-import com.virtusa.neuralhack.bc.model.TestMarks;
+
 import com.virtusa.neuralhack.bc.model.TestQuestion;
 import com.virtusa.neuralhack.bc.model.TestQuestionsOutput;
 
@@ -31,7 +33,7 @@ public class TestService {
 	private TestDao testAccess;
 	
 	@Autowired
-	private TestMarksDao marksAccess;
+	private dataDAO marksAccess;
 	
 	@Autowired
 	private TestQuestionDao tqAccess;
@@ -98,7 +100,7 @@ public class TestService {
 			}
 			
 			
-			TestMarks testm=new TestMarks(id,uName,marks);						//create new update testMarks
+			Data testm=new Data(uName,id,marks);						//create new update testMarks
 			marksAccess.save(testm);
 			
 			res.put(TestInfo.STATUS, TestInfo.MARKS_SUCCESS);
@@ -165,10 +167,14 @@ public class TestService {
 	
 		
 	}
+	
+	
 
 	public List<TestQuestionsOutput> getAllQuestions(long testId) {
 	
 			List<TestQuestion> testQuestionList=tqAccess.findByTestId(testId);
+			if(testQuestionList==null)
+				return null;
 			List<TestQuestionsOutput> resList=new ArrayList<TestQuestionsOutput>();
 			for(TestQuestion t:testQuestionList)
 				resList.add(new TestQuestionsOutput(t.getTf().getQuesId(),t.getQuestion(),t.getCrctOp(),t.getQuesOptions()));

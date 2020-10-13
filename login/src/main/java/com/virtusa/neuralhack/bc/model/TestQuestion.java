@@ -96,6 +96,19 @@ public class TestQuestion {
 	public void setQuestion(String question) {
 		this.question = question;
 	}
+
+
+	
+	public List<String> getQuesOptions() {
+		return quesOptions;
+	}
+
+
+	
+	public void setQuesOptions(List<String> quesOptions) {
+		this.quesOptions = quesOptions;
+	}
+	
 	
 	
 }

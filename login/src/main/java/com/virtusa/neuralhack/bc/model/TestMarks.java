@@ -1,18 +1,13 @@
 package com.virtusa.neuralhack.bc.model;
 
-import java.io.Serializable;
-import java.util.HashMap;
 
-import javax.persistence.Embedded;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

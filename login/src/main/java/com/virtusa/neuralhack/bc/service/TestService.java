@@ -1,5 +1,6 @@
 package com.virtusa.neuralhack.bc.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -21,6 +22,7 @@ import com.virtusa.neuralhack.bc.model.Test;
 import com.virtusa.neuralhack.bc.model.TestInfo;
 import com.virtusa.neuralhack.bc.model.TestMarks;
 import com.virtusa.neuralhack.bc.model.TestQuestion;
+import com.virtusa.neuralhack.bc.model.TestQuestionsOutput;
 
 @Service
 public class TestService {
@@ -162,6 +164,16 @@ public class TestService {
 		return testAccess.findAll();
 	
 		
+	}
+
+	public List<TestQuestionsOutput> getAllQuestions(long testId) {
+	
+			List<TestQuestion> testQuestionList=tqAccess.findByTestId(testId);
+			List<TestQuestionsOutput> resList=new ArrayList<TestQuestionsOutput>();
+			for(TestQuestion t:testQuestionList)
+				resList.add(new TestQuestionsOutput(t.getTf().getQuesId(),t.getQuestion(),t.getCrctOp(),t.getQuesOptions()));
+				
+			return resList;
 	}
 
 

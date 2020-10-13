@@ -7,6 +7,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -14,6 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class TestStudentFk implements Serializable {
 	
 	private long testId;
+
 
 	private String studentUName;
 	

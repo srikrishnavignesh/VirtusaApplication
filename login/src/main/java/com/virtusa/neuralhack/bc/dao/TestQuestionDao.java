@@ -12,4 +12,6 @@ import com.virtusa.neuralhack.bc.model.TestQuestionsFk;
 public interface TestQuestionDao extends JpaRepository<TestQuestion,TestQuestionsFk> {
 
 	List<TestQuestion> findByTestId(long testId);
+	
+	
 }

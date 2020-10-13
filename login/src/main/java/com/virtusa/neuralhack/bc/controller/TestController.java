@@ -15,6 +15,7 @@ import com.virtusa.neuralhack.bc.model.Test;
 import com.virtusa.neuralhack.bc.model.TestMarks;
 import com.virtusa.neuralhack.bc.model.TestQuestion;
 import com.virtusa.neuralhack.bc.model.TestQuestions;
+import com.virtusa.neuralhack.bc.model.TestQuestionsOutput;
 import com.virtusa.neuralhack.bc.service.TestService;
 
 @RestController
@@ -49,6 +50,12 @@ public class TestController {
 	{
 		return service.getAllTests();
 	}
+	
+	@GetMapping("test/questions/{testId}")
+	public List<TestQuestionsOutput> getAllquestions(@PathVariable("testId") long testId) {
+		return service.getAllQuestions(testId);
+	}
+	
 	
 	
 }
